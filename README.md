@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Getting Started with Ethereum React Starter
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+You need to install _Ganache_ first.
+
+Open _Ganache_ and press _QuickStart_ in order to deploy a local blockchain.
+
+`truffle.config.js` is configured to listen to this local server.
 
 ## Available Scripts
 
