@@ -80,9 +80,12 @@ module.exports = {
   },
 
   // Configure your compilers
+  contracts_build_directory: "./src/abis",
+
+  // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "^0.6.0",
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       optimizer: {
