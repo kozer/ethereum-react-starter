@@ -1,8 +1,8 @@
-import useMetamask from "../../hooks/useMetamask";
+import useWallet from "../../hooks/useWallet";
 import Error from "../common/Error";
 
 function WalletInfo() {
-  const [error, walletInfo] = useMetamask();
+  const [error, walletInfo] = useWallet();
   return error ? (
     <Error message={error}></Error>
   ) : (

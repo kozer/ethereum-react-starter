@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import Web3 from "web3";
 
-const HUMANIZE_BALANCE_FACTOR = 1e18;
-
-const useMetamask = () => {
+const useWallet = () => {
   const GANACHE_PORT = 5777;
   const [walletInfo, setWalletInfo] = useState("");
   const [web3, setWeb3] = useState(null);
@@ -16,7 +14,7 @@ const useMetamask = () => {
         try {
           await window.ethereum.enable();
         } catch (e) {
-          setError("Please login with your metamask wallet");
+          setError("Please login with your web3 wallet");
         }
         const netId = await web3.eth.net.getId();
         if (netId !== GANACHE_PORT) {
@@ -27,14 +25,14 @@ const useMetamask = () => {
           const balance = (await web3.eth.getBalance(accounts[0])) || 0;
           setWalletInfo({
             account: accounts[0],
-            balance: balance / HUMANIZE_BALANCE_FACTOR,
+            balance: web3.utils.fromWei(balance),
           });
           setWeb3(web3);
         } else {
-          setError("Please login with your metamask wallet.");
+          setError("Please login with your web3 wallet.");
         }
       } else {
-        setError("Please install a metamask");
+        setError("Please install a web3 wallet");
       }
     };
     run();
@@ -43,4 +41,4 @@ const useMetamask = () => {
   return [error, walletInfo, web3];
 };
 
-export default useMetamask;
+export default useWallet;
